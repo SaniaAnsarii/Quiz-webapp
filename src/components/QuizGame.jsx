@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function QuizGame() {
+
+
   const { id } = useParams(); 
   const navigate = useNavigate();
 
@@ -35,6 +37,8 @@ function QuizGame() {
       navigate("/PlayQuiz");
     }
   }, [id, navigate]);
+  console.log(quizData);
+  
 
   function handleAnswerSelection(index) {
     const updatedAnswers = [...selectedAnswers];
