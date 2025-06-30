@@ -1,6 +1,6 @@
 import frame1 from "../assets/Frame2.jpg";
 import frame2 from "../assets/Frame3.jpg";
-import frameImg from "../assets/Frame4.jpg";
+import frameImg from "../assets/frame4.jpg";
 import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
 
