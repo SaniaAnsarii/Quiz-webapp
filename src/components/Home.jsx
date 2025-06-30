@@ -1,6 +1,6 @@
 import frame1 from "../assets/Frame2.jpg";
 import frame2 from "../assets/Frame3.jpg";
-import frame3 from "../assets/Frame4.jpg";
+import frameImg from "../assets/Frame4.jpg";
 import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ function Home() {
           </Link>
           <Link to="/PlayQuiz">
             <img
-              src={frame3}
+              src={frameImg}
               className="w-64 sm:w-72 md:w-80 h-64 sm:h-72 md:h-80 rounded-lg shadow-md object-cover transition-transform hover:scale-105 duration-300"
               alt="Frame 3"
             />
