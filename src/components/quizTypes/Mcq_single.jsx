@@ -40,41 +40,54 @@ function Mcq_single() {
   }
 
   function saveQuiz(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (title.trim().length < 5 || description.trim().length < 10) {
-      alert("Please fill the title and description properly");
-      return;
-    }
-
-    if (questions.length < 1) {
-      alert("Please add at least one question");
-      return;
-    }
-
-    const quizData = {
-      title,
-      description,
-      questions,
-    };
-
-    let existing = JSON.parse(localStorage.getItem("quizData"));
-    if (!Array.isArray(existing)) existing = [];
-
-    existing.push(quizData);
-    localStorage.setItem("quizData", JSON.stringify(existing));
-    alert("Quiz saved successfully!");
-
-    setTitle("");
-    setDescription("");
-    setQuestions([]);
-    setCurrentQuestion({
-      question: "",
-      options: ["", "", "", ""],
-      correctOptionIndex: null,
-    });
-    setNumber(1);
+  if (title.trim().length < 5 || description.trim().length < 10) {
+    alert("Please fill the title and description properly");
+    return;
   }
+
+  
+  let updatedQuestions = [...questions];
+
+  if (
+    currentQuestion.question.trim() !== "" &&
+    currentQuestion.options.some(opt => opt.trim() !== "") &&
+    currentQuestion.correctOptionIndex !== null
+  ) {
+    updatedQuestions.push(currentQuestion);
+  }
+
+  if (updatedQuestions.length < 1) {
+    alert("Please add at least one valid question");
+    return;
+  }
+
+  const quizData = {
+    title,
+    description,
+    questions: updatedQuestions,
+  };
+
+  let existing = JSON.parse(localStorage.getItem("quizData"));
+  if (!Array.isArray(existing)) existing = [];
+
+  existing.push(quizData);
+  localStorage.setItem("quizData", JSON.stringify(existing));
+  alert("Quiz saved successfully!");
+
+
+  setTitle("");
+  setDescription("");
+  setQuestions([]);
+  setCurrentQuestion({
+    question: "",
+    options: ["", "", "", ""],
+    correctOptionIndex: null,
+  });
+  setNumber(1);
+}
+
 
   return (
     <>

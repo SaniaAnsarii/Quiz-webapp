@@ -12,48 +12,54 @@ function Short_answer() {
 
   const [questions, setQuestions] = useState([]);
 
-  function saveQuiz(e) {
-    e.preventDefault();
+ function saveQuiz(e) {
+  e.preventDefault();
 
-    const questionText = currentQuestion.question.trim();
-    const answerText = currentQuestion.answer.trim();
+  const questionText = currentQuestion.question.trim();
+  const answerText = currentQuestion.answer.trim();
 
-    if (questionText.length < 10 || answerText.length === 0 || answerText.length > 20) {
-      alert("❌ Enter a valid question (min 10 chars) and answer (1–20 chars)");
-      return;
-    }
-
-    if (questions.length < 1 && (!questionText || !answerText)) {
-      alert("Add at least 2 questions.");
-      return;
-    }
-
-    if (title.trim().length < 5 || description.trim().length < 10) {
-      alert("Fill title and description properly");
-      return;
-    }
-
-    const updatedQuestions = [...questions, currentQuestion];
-
-    const quizData = {
-      title,
-      description,
-      questions: updatedQuestions,
-    };
-
-    let existing = JSON.parse(localStorage.getItem("quizData")) || [];
-    if (!Array.isArray(existing)) existing = [];
-
-    existing.push(quizData);
-    localStorage.setItem("quizData", JSON.stringify(existing));
-
-    alert("Quiz saved successfully!");
-    setTitle("");
-    setDescription("");
-    setQuestions([]);
-    setCurrentQuestion({ question: "", answer: "" });
-    setNumber(1);
+  if (title.trim().length < 5 || description.trim().length < 10) {
+    alert("Fill title and description properly");
+    return;
   }
+
+  let updatedQuestions = [...questions];
+
+  if (
+    questionText.length >= 10 &&
+    answerText.length > 0 &&
+    answerText.length <= 20
+  ) {
+    updatedQuestions.push(currentQuestion);
+  }
+
+  if (updatedQuestions.length < 1) {
+    alert("Please add at least one valid question");
+    return;
+  }
+
+  const quizData = {
+    title,
+    description,
+    questions: updatedQuestions,
+  };
+
+  let existing = JSON.parse(localStorage.getItem("quizData")) || [];
+  if (!Array.isArray(existing)) existing = [];
+
+  existing.push(quizData);
+  localStorage.setItem("quizData", JSON.stringify(existing));
+
+  alert("Quiz saved successfully!");
+
+
+  setTitle("");
+  setDescription("");
+  setQuestions([]);
+  setCurrentQuestion({ question: "", answer: "" });
+  setNumber(1);
+}
+
 
   function addQuestion(e) {
     e.preventDefault();
@@ -81,7 +87,7 @@ function Short_answer() {
           </h2>
 
           <form className="space-y-6">
-            {/* Title & Description */}
+      
             <div className="border-2 p-4 md:p-6 rounded shadow border-black-100">
               <input
                 type="text"
@@ -99,7 +105,7 @@ function Short_answer() {
               />
             </div>
 
-            {/* Question Form */}
+      
             <div className="border-2 p-4 md:p-6 rounded shadow border-black-100">
               <label className="block font-semibold mb-2">Question {number}</label>
 
