@@ -8,8 +8,7 @@ function Short_answer() {
   const [currentQuestion, setCurrentQuestion] = useState({
     question: "",
     answer: "",
-     createdAt: new Date().toISOString(), 
-  status: "active", 
+   
   });
 
   const [questions, setQuestions] = useState([]);
@@ -44,6 +43,8 @@ function Short_answer() {
     title,
     description,
     questions: updatedQuestions,
+     createdAt: new Date().toISOString(),  
+    status: "active", 
   };
 
   let existing = JSON.parse(localStorage.getItem("quizData")) || [];

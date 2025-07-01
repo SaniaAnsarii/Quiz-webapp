@@ -41,7 +41,7 @@ function Mcq_single() {
     setCurrentQuestion({ ...currentQuestion, options: updated });
   }
 
-  function saveQuiz(e) {
+ function saveQuiz(e) {
   e.preventDefault();
 
   if (title.trim().length < 5 || description.trim().length < 10) {
@@ -49,7 +49,6 @@ function Mcq_single() {
     return;
   }
 
-  
   let updatedQuestions = [...questions];
 
   if (
@@ -69,6 +68,8 @@ function Mcq_single() {
     title,
     description,
     questions: updatedQuestions,
+    createdAt: new Date().toISOString(),  
+    status: "active",                    
   };
 
   let existing = JSON.parse(localStorage.getItem("quizData"));
@@ -77,7 +78,6 @@ function Mcq_single() {
   existing.push(quizData);
   localStorage.setItem("quizData", JSON.stringify(existing));
   alert("Quiz saved successfully!");
-
 
   setTitle("");
   setDescription("");
@@ -89,6 +89,7 @@ function Mcq_single() {
   });
   setNumber(1);
 }
+
 
 
   return (

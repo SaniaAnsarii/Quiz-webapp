@@ -66,6 +66,8 @@ function Mcq_multiple() {
     title,
     description,
     questions: updatedQuestions,
+     createdAt: new Date().toISOString(),  
+    status: "active", 
   };
 
   let existing = JSON.parse(localStorage.getItem("quizData")) || [];
@@ -83,8 +85,7 @@ function Mcq_multiple() {
     question: "",
     options: ["", "", "", ""],
     correctOptionIndexes: [],
-     createdAt: new Date().toISOString(), 
-  status: "active", 
+     
   });
   setNumber(1);
 }
