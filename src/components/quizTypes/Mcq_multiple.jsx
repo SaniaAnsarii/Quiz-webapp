@@ -8,7 +8,9 @@ function Mcq_multiple() {
   const [currentQuestion, setCurrentQuestion] = useState({
     question: "",
     options: ["", "", "", ""],
-    correctOptionIndexes: []
+    correctOptionIndexes: [],
+    createdAt: new Date().toISOString(),  
+  status: "active", 
   });
 
   const [questions, setQuestions] = useState([]);
@@ -85,6 +87,8 @@ function Mcq_multiple() {
     question: "",
     options: ["", "", "", ""],
     correctOptionIndexes: [],
+    createdAt: new Date().toISOString(),  
+  status: "active", 
      
   });
   setNumber(1);

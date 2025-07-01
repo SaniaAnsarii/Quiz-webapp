@@ -8,6 +8,8 @@ function Short_answer() {
   const [currentQuestion, setCurrentQuestion] = useState({
     question: "",
     answer: "",
+    createdAt: new Date().toISOString(),  
+  status: "active", 
    
   });
 
@@ -59,7 +61,10 @@ function Short_answer() {
   setTitle("");
   setDescription("");
   setQuestions([]);
-  setCurrentQuestion({ question: "", answer: "" });
+  setCurrentQuestion({ question: "", answer: "",
+    createdAt: new Date().toISOString(),  
+  status: "active", 
+   });
   setNumber(1);
 }
 

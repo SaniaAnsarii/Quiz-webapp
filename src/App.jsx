@@ -9,6 +9,7 @@ import MyQuizes from './components/MyQuizes';
 import PlayQuiz from './components/PlayQuiz'
 import QuizGame from './components/QuizGame';
 import QuizResult from './components/QuizResult';
+import EditQuiz from './components/EditQuiz';
 
 function App(){
   
@@ -25,6 +26,7 @@ function App(){
     <Route path='/PlayQuiz' element={<PlayQuiz/>}></Route>
     <Route path="/QuizGame/:id" element={<QuizGame/>} />
     <Route path='/QuizResult' element={<QuizResult/>}> </Route>
+    <Route path='/edit' element={<EditQuiz/>}></Route>
     <Route path='*' element={<h1 className='text-3xl text-red-600 font-bold'>404 Not Found</h1>}/>
    </Routes>
     </>
