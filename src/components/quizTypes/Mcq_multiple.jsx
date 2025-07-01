@@ -83,6 +83,8 @@ function Mcq_multiple() {
     question: "",
     options: ["", "", "", ""],
     correctOptionIndexes: [],
+     createdAt: new Date().toISOString(), 
+  status: "active", 
   });
   setNumber(1);
 }

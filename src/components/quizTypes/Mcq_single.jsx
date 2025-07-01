@@ -9,6 +9,8 @@ function Mcq_single() {
     question: "",
     options: ["", "", "", ""],
     correctOptionIndex: null,
+     createdAt: new Date().toISOString(), 
+  status: "active",
   });
   const [questions, setQuestions] = useState([]);
 

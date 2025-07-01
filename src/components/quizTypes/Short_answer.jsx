@@ -7,7 +7,9 @@ function Short_answer() {
   const [number, setNumber] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState({
     question: "",
-    answer: ""
+    answer: "",
+     createdAt: new Date().toISOString(), 
+  status: "active", 
   });
 
   const [questions, setQuestions] = useState([]);

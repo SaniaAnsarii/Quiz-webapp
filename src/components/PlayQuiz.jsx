@@ -50,20 +50,43 @@ function PlayQuiz() {
                 key={id}
                 className="bg-[#A44200] p-4 sm:p-6 rounded-lg shadow space-y-3"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold mb-1">
-                      {quizdata.title}
-                    </h3>
-                    <p className="text-sm sm:text-base">{quizdata.description}</p>
-                  </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-semibold">{quizdata.title}</h3>
+                  <p className="text-sm sm:text-base">{quizdata.description}</p>
+                  <p className="text-xs sm:text-sm text-gray-300">
+                    Total Questions:{" "}
+                    {Array.isArray(quizdata.questions) ? quizdata.questions.length : 0}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    Created At:{" "}
+                    {quizdata.createdAt
+                      ? new Date(quizdata.createdAt).toLocaleString()
+                      : "Unknown"}
+                  </p>
+                  <p className="text-xs">
+                    Status:{" "}
+                    <span
+                      className={`inline-block px-2 py-0.5 rounded-full text-xs ${
+                        quizdata.status === "active"
+                          ? "bg-green-600"
+                          : "bg-yellow-500"
+                      }`}
+                    >
+                      {quizdata.status || "unknown"}
+                    </span>
+                  </p>
+                </div>
+
+                {quizdata.status !== "inactive" ? (
                   <button
                     onClick={() => playQuiz(id)}
                     className="bg-red-600 text-white text-sm sm:text-base px-4 py-2 rounded hover:bg-red-700 transition"
                   >
                     Play Quiz
                   </button>
-                </div>
+                ) : (
+                  <p className="text-sm text-yellow-300 italic">This quiz is inactive</p>
+                )}
               </div>
             ))
           )}
